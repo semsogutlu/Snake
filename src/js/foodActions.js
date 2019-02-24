@@ -1,6 +1,8 @@
 /* 
 - The function below generates a 10px by 10px vegan square and places on the board randomly to be eaten.
 - The +10 and -10 on random number generator makes sure that food square is within the board.
+- TODO: As a developer, I would like to prevent food generating on the tail of the snake.
+    - Make sure that coordination of the new generated food does not intersect with the snake itself.
 */
 
 export function GenerateFood(board) {
