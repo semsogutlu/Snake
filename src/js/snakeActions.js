@@ -10,11 +10,12 @@ Moving Snake
     - display count of eaten foods.
 - TODO: As a developer, I would like to check if snake hit its tail only when snake turns, 
     so that a function does not get called unnecessarily.
-    - There's no chance to hit the tail unless snake turns. 
+    - There's no chance to hit the tail unless snake turns.
+- TODO: As a developer I would like to write some unit tests in order to be sure that code is covered.
 
 Growing Snake
 - Growing snake is simple: a new square is added at the end of its tail.
-- The position of the last square is determined by the which arrow is pressed.
+- The position of the last square is determined by the which arrow is pressed last.
 */
 
 import {GenerateFood} from './foodActions';
@@ -45,26 +46,21 @@ export function GrowSnake (board, snakeArray, arrowKey) {
 
     if(arrowKey === ARROW_DOWN) {
         newSnakeSquare.y = snakeArray[lastIndex].y - 10;
-        newSnakeSquare.x = snakeArray[lastIndex].x;
-        newSnakeSquare.element = snakeSquare;
-        
+        newSnakeSquare.x = snakeArray[lastIndex].x;        
     }
     else if (arrowKey === ARROW_UP) {
         newSnakeSquare.y = snakeArray[lastIndex].y + 10;
         newSnakeSquare.x = snakeArray[lastIndex].x;
-        newSnakeSquare.element = snakeSquare;
     }
     else if (arrowKey === ARROW_LEFT) { 
         newSnakeSquare.x = snakeArray[lastIndex].x - 10;
         newSnakeSquare.y = snakeArray[lastIndex].y;
-        newSnakeSquare.element = snakeSquare;
     }
     else if (arrowKey === ARROW_RIGHT) {
         newSnakeSquare.x = snakeArray[lastIndex].x + 10;
         newSnakeSquare.y = snakeArray[lastIndex].y;
-        newSnakeSquare.element = snakeSquare;
     }
-
+    newSnakeSquare.element = snakeSquare;
     snakeArray.push(newSnakeSquare);
     board.insertBefore(newSnakeSquare.element, board.lastChild);
 
@@ -78,7 +74,7 @@ const checkForSnakeHittingTheTail = (snakeArray, listener, bodyElement, interval
     for(let i=1; i < snakeArray.length; i++) {
         if(snakeArray[i].x === snakeHead.x && snakeArray[i].y === snakeHead.y)
         {
-            //die by tail
+            //hit the tail! Remove event listener and stop movement of the snake
             bodyElement.removeEventListener("keydown", listener, true);
             clearInterval(intervalId);
         }

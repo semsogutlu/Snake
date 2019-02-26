@@ -25,7 +25,7 @@ export default function WireUpArrowKeys (bodyElement, snakeArray) {
         if(allowedMovesArray.indexOf(event.key)  > -1 ) {
             calculateMovement(bodyElement, event.key, snakeArray, document.getElementById("snake-board"));
         }        
-      }, true
+      }
     )
 };
 
@@ -36,7 +36,6 @@ const calculateMovement = (bodyElement, arrowKey, snakeArray, board) => {
         clearInterval(intervalId);
     }
 
-
     intervalId = setInterval(() => {
         if(arrowKey === ARROW_DOWN) {
             if(boardHeight >= snakeArray[0].y + 10) {
@@ -44,8 +43,8 @@ const calculateMovement = (bodyElement, arrowKey, snakeArray, board) => {
                 allowedMovesArray = [ARROW_LEFT, ARROW_RIGHT];
             }
             else {
-                //die by wall
-                bodyElement.removeEventListener("keydown", listener, true);
+                //hit the wall! Remove event listener and stop movement of the snake
+                bodyElement.removeEventListener("keydown", listener);
                 clearInterval(intervalId);
                 
             }
@@ -56,8 +55,8 @@ const calculateMovement = (bodyElement, arrowKey, snakeArray, board) => {
                 allowedMovesArray = [ARROW_LEFT, ARROW_RIGHT];        
             }
             else {
-                //die by wall
-                bodyElement.removeEventListener("keydown", listener, true);
+                //hit the wall! Remove event listener and stop movement of the snake
+                bodyElement.removeEventListener("keydown", listener);
                 clearInterval(intervalId);
             } 
         }
@@ -69,21 +68,20 @@ const calculateMovement = (bodyElement, arrowKey, snakeArray, board) => {
                 allowedMovesArray = [ARROW_DOWN, ARROW_UP];
             }
             else {
-                //die by wall
-                bodyElement.removeEventListener("keydown", listener, true);
+                //hit the wall! Remove event listener and stop movement of the snake
+                bodyElement.removeEventListener("keydown", listener);
                 clearInterval(intervalId);
             } 
         }
 
         else if (arrowKey === ARROW_LEFT) {
-            
             if(snakeArray[0].x > 10) {
                 snakeArray.unshift({x: snakeArray[0].x - 10, y: snakeArray[0].y})
                 allowedMovesArray = [ARROW_DOWN, ARROW_UP];
             }
             else {
-                //die by wall
-                bodyElement.removeEventListener("keydown", listener, true);
+                //hit the wall! Remove event listener and stop movement of the snake
+                bodyElement.removeEventListener("keydown", listener);
                 clearInterval(intervalId);
             } 
         }

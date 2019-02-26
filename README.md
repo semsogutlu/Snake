@@ -23,4 +23,5 @@ Snake Game!
 - A local high score list
 - Ability to start a new game without refreshing the page
 - Build a UI to play on the phone
+- Make the game harder overtime by speeding up the snake
 
