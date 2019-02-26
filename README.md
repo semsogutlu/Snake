@@ -18,7 +18,7 @@ Snake Game!
 - Watch out - if you hit the wall or your tail the game is over
 - If your snake dies, refresh the page to play again
 
-## Future TODOs
+## TODOs
 - Scoreboard
 - A local high score list
 - Ability to start a new game without refreshing the page
