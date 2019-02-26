@@ -1,5 +1,3 @@
-import {GenerateFood} from './foodActions';
-
 let board;
 
 export function CreateBoard (bodyElement) {
@@ -15,11 +13,7 @@ export function CreateBoard (bodyElement) {
     board.style.width = browserWidth - (browserWidth % 10) + "px";
     board.className = "board";
     bodyElement.insertBefore(board, bodyElement.lastChild);
-    
-    //Create first food yum!
-    GenerateFood(board);
-    
-
+    return board;
 }
 
 export function InitiateSnake () {

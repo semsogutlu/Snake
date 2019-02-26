@@ -2,9 +2,13 @@
 
 import {CreateBoard, InitiateSnake} from './init'
 import WireUpArrowKeys from './controls'
+import {GenerateFood} from './foodActions';
 
 const bodyElement = document.getElementsByTagName("body")[0];
-CreateBoard(bodyElement);
+const board = CreateBoard(bodyElement);
+
+//Create first food yum!
+GenerateFood(board);
 
 let snakeArray = InitiateSnake();
 
