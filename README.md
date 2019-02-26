@@ -7,7 +7,7 @@ Snake Game!
 - Then run `yarn run build`
 - Open `index.html` in your browser
 - Play!
-- If you don't wanna install, you can play it online [here](https://semsogutlu.github.io/snake/src/index.html)
+- If you don't wanna install locally, you can play it online [here](https://semsogutlu.github.io/snake/src/index.html)
 
 ## How it works?
 - The purple square is your snake
